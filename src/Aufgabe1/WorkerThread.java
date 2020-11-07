@@ -15,15 +15,14 @@ public class WorkerThread extends Thread{
 
     public void run(){
         try {
-        byte[] clientBuffer = new byte[65507];
-        DatagramPacket clientPackage = new DatagramPacket(clientBuffer, clientBuffer.length);
-        InetAddress clientAdress = clientPackage.getAddress();
-        int clientPort = clientPackage.getPort();
-        String msg = new String(clientBuffer,0, clientBuffer.length);
-        //verarbeitung der Message
-        // Nachricht Bsp: READ file1,2
+        int clientPort = this.threadPackage.getPort();
+        InetAddress clientAdress = this.threadPackage.getAddress();
+        byte[] clientMsg = threadPackage.getData();
+        String msg = new String(clientMsg,0, clientMsg.length);
+            //verarbeitung der Message
+            // Nachricht Bsp: READ file1,2
 
-        //Monitor
+            //Monitor
         String[] msgSplit = msg.split(" ",2);
         //1. READ/WRITE      2. file1,1
         if(msgSplit[0]=="READ"){
