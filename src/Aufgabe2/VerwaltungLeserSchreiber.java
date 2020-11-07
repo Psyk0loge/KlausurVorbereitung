@@ -43,8 +43,7 @@ public class VerwaltungLeserSchreiber {
 
     public static void read(int id) {
         try {
-
-        System.out.println("Thread + " + id+" versucht zu lesen");
+        System.out.println("Leser " + id+" versucht zu lesen");
         mutex.acquire();
         if (ctrWriters < 1) {
         privSemL[id].release();
@@ -59,11 +58,13 @@ public class VerwaltungLeserSchreiber {
         ctrWaitingReaders--;
         waitingReaders[id] = false;
         mutex.release();
-        System.out.println("Thread + " + id+" liest gerade");
-        sleep(5000);
+        System.out.println("Leser " + id+" liest gerade");
+        int sleepTime = (int) (Math.random()*1000);
+        Thread.sleep(sleepTime);
         mutex.acquire();
         //nächsten Auswählen
         ctrReader--;
+        System.out.println("Leser " + id+" hört auf zu lesen\n------------------------------------------------------");
         if (ctrReader == 0 && ctrWaitingWriters > 0) {
             releaseWriter();
         }
@@ -77,6 +78,7 @@ public class VerwaltungLeserSchreiber {
     public static void write(int id) {
         try {
             //Eintrittsprotokoll
+            System.out.println("Schreiber " + id+" versucht zu schreiben");
             mutex.acquire();
             if(ctrReader < 1 || ctrWriters < 1||ctrWaitingReaders<1) {
                 privSemW[id].release();
@@ -94,14 +96,15 @@ public class VerwaltungLeserSchreiber {
             mutex.release();
 
             ctrWaitingWriters--;
-            System.out.println("Thread "+ id + "schreibt gerade");  //Sachen schreiben...
-            sleep(5000);
-
+            System.out.println("Schreiber "+ id + " schreibt gerade");  //Sachen schreiben...
+            int sleepTime = (int) (Math.random()*1000);
+            Thread.sleep(sleepTime);
 
             mutex.acquire();
+            ctrWriters--;
+            System.out.println("Schreiber " + id+" hört auf zu schreiben\n------------------------------------------------------");
             if (ctrWaitingReaders > 0) {
                 releaseReader();
-                ctrReader++;
             } else {
                 releaseWriter();
             }
@@ -117,6 +120,19 @@ public class VerwaltungLeserSchreiber {
         //Aus den beiden Klassen die Threads erstellen
         readThreads[] readThreads = new readThreads[5];
         writeThreads[] writeThreads = new  writeThreads[5];
+        for(int i=0;i<waitingReaders.length;i++){
+            waitingReaders[i]=false;
+        }
+        for(int i=0;i<waitingWriters.length;i++){
+            waitingWriters[i]=false;
+        }
+        for(int i=0;i<privSemL.length;i++){
+            privSemL[i]=new Semaphore(0,true);
+        }
+        for(int i=0;i<privSemW.length;i++){
+            privSemW[i]=new Semaphore(0,true);
+        }
+
         for(int i=0;i<5;i++){
             readThreads[i] = new readThreads(i);
             readThreads[i].start();

@@ -10,7 +10,7 @@ public class writeThreads extends Thread{
         VerwaltungLeserSchreiber.write(this.id);
         System.out.println("I bims Writerthread" + this.id + "und schlafe");
         try {
-            sleep(5000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
