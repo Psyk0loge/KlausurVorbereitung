@@ -10,7 +10,7 @@ public class writeThreads extends Thread{
         while(true) {
             System.out.println("I bims Schreiber" + this.id + " und schlafe bis ich wieder schreibe");
             try {
-                int sleepTime = (int) (Math.random()*1000);
+                int sleepTime = (int) (Math.random()*10000);
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();

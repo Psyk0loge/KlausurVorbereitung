@@ -14,7 +14,7 @@ public class readThreads extends Thread{
         while(true) {
             System.out.println("I bims Leser" + this.id + " und schlafe bis ich wieder Lese");
             try {
-                int sleepTime = (int) (Math.random()*1000);
+                int sleepTime = (int) (Math.random()*10000);
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
