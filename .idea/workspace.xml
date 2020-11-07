@@ -19,14 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/readThreads.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/writeThreads.java" afterDir="false" />
+    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="here">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/Dispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonitorKlasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/MonitorKlasse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WorkerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/WorkerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +75,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="here" />
+    <option name="LAST_COMMIT_MESSAGE" value="here" />
   </component>
   <component name="WindowStateProjectService">
     <state x="453" y="2" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604667235677">

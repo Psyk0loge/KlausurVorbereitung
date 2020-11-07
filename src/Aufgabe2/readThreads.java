@@ -3,11 +3,15 @@ package Aufgabe2;
 import java.util.concurrent.Semaphore;
 
 public class readThreads extends Thread{
-    private static Semaphore[] privSem;
-    private int ID;
+    //Attribute
+    private int id;
+
+    public readThreads(int id){
+        this.id=id;
+    }
 
     public void run(){
-        
+
 
     }
 
