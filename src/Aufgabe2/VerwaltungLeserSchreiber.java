@@ -26,13 +26,15 @@ public class VerwaltungLeserSchreiber {
                 ctrWriters++;
                 ctrWaitingWriters--;
                 waitingWriters[currentWPosition] = false;
-                privSemW[currentWPosition].release();
                 currentWPosition = (currentWPosition+1)%waitingWriters.length;
+                privSemW[currentWPosition].release();
                 break;
+            }else{
+                currentWPosition = (currentWPosition+1)%waitingWriters.length;
             }
-            currentWPosition = (currentWPosition+1)%waitingWriters.length;
+
         }
-        System.out.println("Schreiber "+(currentWPosition-1)+" wurde aufgeweckt");
+        System.out.println("Schreiber "+(currentWPosition)+" wurde aufgeweckt");
     }
 
     public static void releaseReader(){
@@ -41,13 +43,14 @@ public class VerwaltungLeserSchreiber {
                 ctrReader++;
                 ctrWaitingReaders--;
                 waitingReaders[currentRPosition] = false;
-                privSemL[currentRPosition].release();
                 currentRPosition = (currentRPosition+1)%waitingReaders.length;
+                privSemL[currentRPosition].release();
                 break;
+            }else{
+                currentRPosition = (currentRPosition+1)%waitingReaders.length;
             }
-            currentRPosition = (currentRPosition+1)%waitingReaders.length;
         }
-        System.out.println("Leser "+(currentWPosition-1)+" wurde aufgeweckt");
+        System.out.println("Leser "+(currentRPosition)+" wurde aufgeweckt");
     }
 
 
@@ -76,9 +79,12 @@ public class VerwaltungLeserSchreiber {
         ctrReader--;
         System.out.println("Leser " + id+" hört auf zu lesen\n------------------------------------------------------");
         System.out.println("Anzahle leser: "+ctrReader+"\n Anzahle wartenderLeser "+ctrWaitingReaders+ "\n Anzahl SChreiber "+ctrWriters+"\n Anzahl wartender Schreiber " +ctrWaitingWriters );
-        if (ctrReader == 0 && ctrWaitingWriters > 0) {
+        if(ctrWaitingReaders>0){
+            releaseReader();
+        } else if (ctrReader == 0 && ctrWaitingWriters > 0){
            releaseWriter();
         }
+
         mutex.release();
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,7 +8,6 @@ public class writeThreads extends Thread{
     public void run(){
 
         while(true) {
-            VerwaltungLeserSchreiber.write(this.id);
             System.out.println("I bims Schreiber" + this.id + " und schlafe bis ich wieder schreibe");
             try {
                 int sleepTime = (int) (Math.random()*1000);
@@ -16,6 +15,7 @@ public class writeThreads extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            VerwaltungLeserSchreiber.write(this.id);
         }
 
 
