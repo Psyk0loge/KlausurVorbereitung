@@ -7,6 +7,16 @@ public class writeThreads extends Thread{
     }
     public void run(){
 
+        VerwaltungLeserSchreiber.write(this.id);
+        System.out.println("I bims Writerthread" + this.id + "und schlafe");
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
 
     }
 }

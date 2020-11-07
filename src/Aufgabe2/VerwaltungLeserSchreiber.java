@@ -2,6 +2,8 @@ package Aufgabe2;
 
 import java.util.concurrent.Semaphore;
 
+import static java.lang.Thread.sleep;
+
 public class VerwaltungLeserSchreiber {
 
     private static int currentWPosition = 0;
@@ -58,7 +60,7 @@ public class VerwaltungLeserSchreiber {
         waitingReaders[id] = false;
         mutex.release();
         System.out.println("Thread + " + id+" liest gerade");
-
+        sleep(5000);
         mutex.acquire();
         //nächsten Auswählen
         ctrReader--;
@@ -72,8 +74,9 @@ public class VerwaltungLeserSchreiber {
     }
 
 
-    public static void Write(int id) {
+    public static void write(int id) {
         try {
+            //Eintrittsprotokoll
             mutex.acquire();
             if(ctrReader < 1 || ctrWriters < 1||ctrWaitingReaders<1) {
                 privSemW[id].release();
@@ -91,7 +94,9 @@ public class VerwaltungLeserSchreiber {
             mutex.release();
 
             ctrWaitingWriters--;
-//Sachen schreiben...
+            System.out.println("Thread "+ id + "schreibt gerade");  //Sachen schreiben...
+            sleep(5000);
+
 
             mutex.acquire();
             if (ctrWaitingReaders > 0) {
@@ -108,6 +113,20 @@ public class VerwaltungLeserSchreiber {
     }
 
     public static void main(String[] args) {
+
+        //Aus den beiden Klassen die Threads erstellen
+        readThreads[] readThreads = new readThreads[5];
+        writeThreads[] writeThreads = new  writeThreads[5];
+        for(int i=0;i<5;i++){
+            readThreads[i] = new readThreads(i);
+            readThreads[i].start();
+        }
+
+        for (int i=0;i<5;i++){
+            writeThreads[i] = new writeThreads(i);
+            writeThreads[i].start();
+        }
+
 
     }
 }
