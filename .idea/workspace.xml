@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="">
+    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="here">
+      <change afterPath="$PROJECT_DIR$/src/EchoClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aufgabe1/MonitorKlasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/MonitorKlasse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Aufgabe2/readThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe2/readThreads.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Aufgabe2/writeThreads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe2/writeThreads.java" afterDir="false" />
     </list>
@@ -59,7 +60,14 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EchoClient">
+    <configuration name="EchoClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EchoClient" />
+      <module name="KlausurVorbereitung" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="VerwaltungLeserSchreiber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Aufgabe2.VerwaltungLeserSchreiber" />
       <module name="KlausurVorbereitung" />
@@ -75,11 +83,12 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EchoClient" />
         <item itemvalue="Application.VerwaltungLeserSchreiber" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -127,25 +136,25 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604741486932" />
     <state x="987" y="370" key="FileChooserDialogImpl/0.0.2560.1400/-1920.349.1920.1040@0.0.2560.1400" timestamp="1604750457389" />
-    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1604756895043">
+    <state width="1877" height="205" key="GridCell.Tab.0.bottom" timestamp="1604770437030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604756895043" />
+    <state width="1877" height="205" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604770437030" />
     <state width="2505" height="387" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.349.1920.1040@0.0.2560.1400" timestamp="1604750678300" />
-    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1604756895043">
+    <state width="1877" height="205" key="GridCell.Tab.0.center" timestamp="1604770437030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604756895043" />
+    <state width="1877" height="205" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604770437030" />
     <state width="2505" height="387" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.349.1920.1040@0.0.2560.1400" timestamp="1604750678300" />
-    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1604756895042">
+    <state width="1877" height="205" key="GridCell.Tab.0.left" timestamp="1604770437030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604756895042" />
+    <state width="1877" height="205" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604770437030" />
     <state width="2505" height="387" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.349.1920.1040@0.0.2560.1400" timestamp="1604750678300" />
-    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1604756895043">
+    <state width="1877" height="205" key="GridCell.Tab.0.right" timestamp="1604770437030">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604756895043" />
+    <state width="1877" height="205" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604770437030" />
     <state width="2505" height="387" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.349.1920.1040@0.0.2560.1400" timestamp="1604750678300" />
     <state x="772" y="353" key="Vcs.Push.Dialog.v2" timestamp="1604750624244">
       <screen x="0" y="0" width="2560" height="1400" />
