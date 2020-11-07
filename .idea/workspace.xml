@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="" />
+    <list default="true" id="7c963e5a-3f70-405e-a196-e81947d7b20b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/VerwaltungLeserSchreiber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/readThreads.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Aufgabe2/writeThreads.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/Dispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonitorKlasse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/MonitorKlasse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorkerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aufgabe1/WorkerThread.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +39,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -41,14 +70,25 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="453" y="2" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604667235677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="453" y="2" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604667235677" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1604663916523">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1604741486932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604663916523" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604741486932" />
   </component>
 </project>

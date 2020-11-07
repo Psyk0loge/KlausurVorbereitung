@@ -1,3 +1,5 @@
+package Aufgabe1;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
