@@ -40,7 +40,7 @@ public class MonitorKlasse {
                 e.printStackTrace();
             }
         }
-
+        anzAktiverLeser++;
     }
     public synchronized void endRead(){
         anzAktiverLeser--;
@@ -65,7 +65,7 @@ public class MonitorKlasse {
                 e.printStackTrace();
             }
         }
-
+        anzAktiverSchreiber++;
     }
 
     public synchronized void endWrite(){

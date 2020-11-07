@@ -15,16 +15,15 @@ public class WorkerThread extends Thread{
 
     public void run(){
         try {
-        byte[] clientBuffer = new byte[65507];
-        DatagramPacket clientPackage = new DatagramPacket(clientBuffer, clientBuffer.length);
-        InetAddress clientAdress = clientPackage.getAddress();
-        int clientPort = clientPackage.getPort();
-        String msg = new String(clientBuffer,0, clientBuffer.length);
+        int clientPort = this.serverSocket.getPort();
+        InetAddress inetAddress = this.serverSocket.getInetAddress();
+        byte[] clientMessage = this.threadPackage.getData();
+        String message = new String(clientMessage,0,clientMessage.length);
         //verarbeitung der Message
         // Nachricht Bsp: READ file1,2
 
         //Monitor
-        String[] msgSplit = msg.split(" ",2);
+        String[] msgSplit = message.split(" ",2);
         //1. READ/WRITE      2. file1,1
         if(msgSplit[0]=="READ"){
             String[] penis = msgSplit[1].split(",",2);
@@ -52,7 +51,7 @@ public class WorkerThread extends Thread{
         String antwort = "";
         byte[] threadBuffer = new byte[65507];
         threadBuffer = antwort.getBytes();
-        DatagramPacket threadPackage = new DatagramPacket(threadBuffer,threadBuffer.length, clientAdress,clientPort);
+        DatagramPacket threadPackage = new DatagramPacket(threadBuffer,threadBuffer.length, inetAddress,clientPort);
         serverSocket.send(threadPackage);
         } catch (Exception e) {
             e.printStackTrace();
