@@ -21,52 +21,63 @@ public class VerwaltungLeserSchreiber {
     //Methoden
 
     public static void releaseWriter(){
-        for(int i=currentWPosition;i<waitingWriters.length;i++){
-            currentWPosition = (currentWPosition+1)%waitingWriters.length;
-            if(waitingWriters[i]){
-                privSemW[i].release();
+        for(int i=0;i<5;i++){
+            if(waitingWriters[currentWPosition]){
+                ctrWriters++;
+                ctrWaitingWriters--;
+                waitingWriters[currentWPosition] = false;
+                privSemW[currentWPosition].release();
+                currentWPosition = (currentWPosition+1)%waitingWriters.length;
                 break;
             }
+            currentWPosition = (currentWPosition+1)%waitingWriters.length;
         }
+        System.out.println("Schreiber "+(currentWPosition-1)+" wurde aufgeweckt");
     }
 
     public static void releaseReader(){
-        for(int i=currentRPosition;i<waitingReaders.length;i++){
-            currentRPosition = (currentRPosition+1)%waitingReaders.length;
-            if(waitingReaders[i]){
-                privSemL[i].release();
+        for(int i=0;i<5;i++){
+            if(waitingReaders[currentRPosition]){
+                ctrReader++;
+                ctrWaitingReaders--;
+                waitingReaders[currentRPosition] = false;
+                privSemL[currentRPosition].release();
+                currentRPosition = (currentRPosition+1)%waitingReaders.length;
                 break;
             }
+            currentRPosition = (currentRPosition+1)%waitingReaders.length;
         }
+        System.out.println("Leser "+(currentWPosition-1)+" wurde aufgeweckt");
     }
 
 
     public static void read(int id) {
         try {
-        System.out.println("Leser " + id+" versucht zu lesen");
         mutex.acquire();
+            System.out.println("Leser "+id+" versucht zu lesen");
         if (ctrWriters < 1) {
+        ctrReader++;
         privSemL[id].release();
+        } else {
+            ctrWaitingReaders++;
+            waitingReaders[id] = true;
+            System.out.println("Leser " + id+" muss warten");
         }
-        ctrWaitingReaders++;
-        waitingReaders[id] = true;
         mutex.release();
 
         privSemL[id].acquire();
-        mutex.acquire();
-        ctrReader++;
-        ctrWaitingReaders--;
-        waitingReaders[id] = false;
-        mutex.release();
+
         System.out.println("Leser " + id+" liest gerade");
         int sleepTime = (int) (Math.random()*1000);
         Thread.sleep(sleepTime);
+
         mutex.acquire();
         //nächsten Auswählen
         ctrReader--;
         System.out.println("Leser " + id+" hört auf zu lesen\n------------------------------------------------------");
+        System.out.println("Anzahle leser: "+ctrReader+"\n Anzahle wartenderLeser "+ctrWaitingReaders+ "\n Anzahl SChreiber "+ctrWriters+"\n Anzahl wartender Schreiber " +ctrWaitingWriters );
         if (ctrReader == 0 && ctrWaitingWriters > 0) {
-            releaseWriter();
+           releaseWriter();
         }
         mutex.release();
         } catch (Exception e) {
@@ -78,36 +89,34 @@ public class VerwaltungLeserSchreiber {
     public static void write(int id) {
         try {
             //Eintrittsprotokoll
-            System.out.println("Schreiber " + id+" versucht zu schreiben");
             mutex.acquire();
-            if(ctrReader < 1 || ctrWriters < 1||ctrWaitingReaders<1) {
+            System.out.println("Schreiber " + id+" versucht zu schreiben");
+            if(ctrReader < 1 && ctrWriters < 1&&ctrWaitingReaders<1) {
+                ctrWriters++;
                 privSemW[id].release();
+            }else {
+                ctrWaitingWriters++;
+                waitingWriters[id] = true;
+                System.out.println("Schreiber " + id+" muss warten");
             }
-            ctrWaitingWriters++;
-            waitingWriters[id] = true;
             mutex.release();
-
 
             privSemW[id].acquire();
-            mutex.acquire();
-            ctrWriters++;
-            ctrWaitingWriters--;
-            waitingWriters[id] = false;
-            mutex.release();
 
-            ctrWaitingWriters--;
-            System.out.println("Schreiber "+ id + " schreibt gerade");  //Sachen schreiben...
+            System.out.println("Schreiber "+ id + " schreibt gerade");
             int sleepTime = (int) (Math.random()*1000);
             Thread.sleep(sleepTime);
 
             mutex.acquire();
             ctrWriters--;
             System.out.println("Schreiber " + id+" hört auf zu schreiben\n------------------------------------------------------");
+            System.out.println("Anzahle leser: "+ctrReader+"\n Anzahle wartenderLeser "+ctrWaitingReaders+ "\n Anzahl SChreiber "+ctrWriters+"\n Anzahl wartender Schreiber " +ctrWaitingWriters );
             if (ctrWaitingReaders > 0) {
                 releaseReader();
             } else {
                 releaseWriter();
             }
+            mutex.release();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -116,7 +125,7 @@ public class VerwaltungLeserSchreiber {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("Start");
         //Aus den beiden Klassen die Threads erstellen
         readThreads[] readThreads = new readThreads[5];
         writeThreads[] writeThreads = new  writeThreads[5];

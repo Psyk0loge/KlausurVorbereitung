@@ -11,15 +11,16 @@ public class readThreads extends Thread{
     }
 
     public void run(){
-
-        VerwaltungLeserSchreiber.read(this.id);
-        System.out.println("I bims Readerthread" + this.id + "und schlafe bis ich wieder Lese");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(true) {
+            VerwaltungLeserSchreiber.read(this.id);
+            System.out.println("I bims Leser" + this.id + " und schlafe bis ich wieder Lese");
+            try {
+                int sleepTime = (int) (Math.random()*1000);
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
 
     }
 

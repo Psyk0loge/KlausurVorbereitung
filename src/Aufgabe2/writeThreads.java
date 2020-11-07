@@ -7,12 +7,15 @@ public class writeThreads extends Thread{
     }
     public void run(){
 
-        VerwaltungLeserSchreiber.write(this.id);
-        System.out.println("I bims Writerthread" + this.id + "und schlafe");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(true) {
+            VerwaltungLeserSchreiber.write(this.id);
+            System.out.println("I bims Schreiber" + this.id + " und schlafe bis ich wieder schreibe");
+            try {
+                int sleepTime = (int) (Math.random()*1000);
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
 
