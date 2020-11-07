@@ -29,6 +29,10 @@ public class Client {
 
                 DatagramPacket datagramPacket = new DatagramPacket(bytes, bytes.length,getLocalHost() , 5000);
                 clientSocket.send(datagramPacket);
+                byte[] serverBuffer = new byte[65507];//Puffer für die Nachricht des Servers
+                DatagramPacket serverPacket = new DatagramPacket(serverBuffer, serverBuffer.length);//Vorbereitung zum Empfang der Servernachricht
+                clientSocket.receive(serverPacket);//Empfangen der Servernachricht
+                System.out.println("Serverantwort an Client: " + new String(serverPacket.getData(), 0, serverPacket.getLength()));
 
             } catch (Exception e) {
                 e.printStackTrace();

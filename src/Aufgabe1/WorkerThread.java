@@ -15,6 +15,7 @@ public class WorkerThread extends Thread{
 
     public void run(){
         try {
+        String antwort="";
         int clientPort = this.threadPackage.getPort();
         InetAddress clientAdress = this.threadPackage.getAddress();
         byte[] clientMsg = threadPackage.getData();
@@ -24,21 +25,27 @@ public class WorkerThread extends Thread{
 
             //Monitor
         String[] msgSplit = msg.split(" ",2);
+            System.out.println("1."+ msgSplit[0]+" 2."+msgSplit[1]);
         //1. READ/WRITE      2. file1,1
-        if(msgSplit[0]=="READ"){
+        if(msgSplit[0].equals("READ")){
+            System.out.println("Thread liest");
             String[] penis = msgSplit[1].split(",",2);
             String fileName = penis[0];
-            String lineNo = penis[1];
+            String lineNoS = penis[1].trim();
+            int lineNo = Integer.parseInt(lineNoS);
             //Aufruf der readmethode des files mit den übergabeparamter lineNO und fileName
+            MonitorKlasse.mKO.read(lineNo);
 
 
-        }else if(msgSplit[0]=="WRITE"){
+        }else if(msgSplit[0].equals("WRITE")){
+            System.out.println("Thread schreibt");
 //            file1,1,Meine Note ist ne 1
             String[] penis = msgSplit[1].split(",",3);
             String fileName = penis[0];
-            String lineNo = penis[1];
+            int lineNo = Integer.parseInt(penis[1]);
             String dataToWrite = penis[2];
             //Aufruf der Write-methode des files mit den Übergabeparamter lineNO und fileName und den Daten die in das Fiel geschreiben werden sollen
+            MonitorKlasse.mKO.write(lineNo,dataToWrite);
 
 
         }else{
@@ -48,8 +55,8 @@ public class WorkerThread extends Thread{
 
 
         //Zurücksenden
-        String antwort = "";
-        byte[] threadBuffer = new byte[65507];
+
+        byte[] threadBuffer;
         threadBuffer = antwort.getBytes();
         DatagramPacket threadPackage = new DatagramPacket(threadBuffer,threadBuffer.length, clientAdress,clientPort);
         serverSocket.send(threadPackage);

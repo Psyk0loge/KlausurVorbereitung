@@ -17,6 +17,7 @@ public class Dispatcher {
             serverSocket.receive(serverPacket);
             System.out.println("Packet recieved");
             WorkerThread test = new WorkerThread(serverPacket,serverSocket);
+            test.start();
             System.out.println("Packet an Thread übergeben");
 
         }

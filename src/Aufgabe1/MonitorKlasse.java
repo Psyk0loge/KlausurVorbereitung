@@ -31,7 +31,7 @@ public class MonitorKlasse {
 //            }
 //        }
         //LeserPriorität nur warten wenn gerade jemand am schreiben ist weil wir sollen vor dem wartendenSchreiber drankommen
-        System.out.println("Jemand versucht zu schreiben");
+        System.out.println("Jemand versucht zu lesen");
         while(anzAktiverSchreiber >0){
             try {
                 anzWartendeLeser++;
@@ -50,7 +50,7 @@ public class MonitorKlasse {
     public synchronized void endRead(){
         anzAktiverLeser--;
         System.out.println("ein Leser hat aufgehört zu lesen");
-        System.out.println("Es gibt noch: \n"+"aktive Leser: "+anzAktiverLeser+"\nwartende Leser: "+anzWartendeLeser+"\naktive Schreiber "+anzAktiverSchreiber+"\n wartende Schreiber: "+anzWartenderSchreiber);
+        System.out.println("Es gibt noch: \n"+"aktive Leser: "+anzAktiverLeser+"\nwartende Leser: "+anzWartendeLeser+"\naktive Schreiber "+anzAktiverSchreiber+"\nwartende Schreiber: "+anzWartenderSchreiber);
         notifyAll();
     }
     public synchronized void startWrite(){
@@ -65,9 +65,14 @@ public class MonitorKlasse {
 //            }
 //        }
         //Leserpriotität
+        System.out.println("Jemand versucht zu schreiben");
         while(anzAktiverLeser>0||anzAktiverSchreiber>0||anzWartendeLeser>0){
             try {
+                System.out.println("ein Schreiber muss warten");
+                anzWartenderSchreiber++;
                 wait();
+                anzWartenderSchreiber--;
+                System.out.println("ein Schreiber wurde aus dem Warten aufgeweckt");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -78,6 +83,7 @@ public class MonitorKlasse {
 
     public synchronized void endWrite(){
         anzAktiverSchreiber--;
+        System.out.println("ein Schreiber hat aufgehört zu Schreiben");
         System.out.println("Es gibt noch: \n"+"aktive Leser: "+anzAktiverLeser+"\nwartende Leser: "+anzWartendeLeser+"\naktive Schreiber "+anzAktiverSchreiber+"\n wartende Schreiber: "+anzWartenderSchreiber);
         notifyAll();
     }
@@ -103,7 +109,7 @@ public class MonitorKlasse {
 //        } finally {
 //            endRead();                                                 //Austrittsprotokoll - Lesen
 //        }
-        System.out.println("Jemand ist am Lesen");
+        System.out.println("Jemand ist am Lesen"+lineNo);
         int sleep;
         sleep = (int) (Math.random()*1000);
         Thread.sleep(sleep);
@@ -137,7 +143,7 @@ public class MonitorKlasse {
 //            endWrite();//Austrittsprotokoll - Schreiben
 //        }
 
-        System.out.println("Jemand ist am Schreiben");
+        System.out.println("Jemand ist am Schreiben"+data);
         int sleep;
         sleep = (int) (Math.random()*1000);
         Thread.sleep(sleep);
